@@ -1,14 +1,12 @@
-package hamsung.hamsung_project.Controller;
+package hamsung.hamsung_project.controller;
 
-import hamsung.hamsung_project.Dto.ResultDto;
-import hamsung.hamsung_project.Dto.StudyDto;
-import hamsung.hamsung_project.Entity.Study;
-import hamsung.hamsung_project.Repository.StudyRepository;
-import hamsung.hamsung_project.Service.StudyService;
+import hamsung.hamsung_project.dto.ResultDto;
+import hamsung.hamsung_project.dto.StudyDto;
+import hamsung.hamsung_project.entity.Study;
+import hamsung.hamsung_project.service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

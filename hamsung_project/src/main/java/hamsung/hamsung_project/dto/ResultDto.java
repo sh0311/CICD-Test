@@ -1,9 +1,8 @@
-package hamsung.hamsung_project.Dto;
+package hamsung.hamsung_project.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Data
 @AllArgsConstructor

@@ -1,7 +1,7 @@
-package hamsung.hamsung_project.Dto;
+package hamsung.hamsung_project.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import hamsung.hamsung_project.Entity.Study;
+import hamsung.hamsung_project.entity.Study;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

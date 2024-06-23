@@ -1,9 +1,8 @@
-package hamsung.hamsung_project.Entity;
+package hamsung.hamsung_project.entity;
 
-import hamsung.hamsung_project.Dto.PostDto;
+import hamsung.hamsung_project.dto.PostDto;
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 

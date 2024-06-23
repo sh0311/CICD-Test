@@ -1,8 +1,8 @@
-package hamsung.hamsung_project.Controller;
+package hamsung.hamsung_project.controller;
 
-import hamsung.hamsung_project.Dto.ResultDto;
-import hamsung.hamsung_project.Dto.ReviewDto;
-import hamsung.hamsung_project.Service.ReviewService;
+import hamsung.hamsung_project.dto.ResultDto;
+import hamsung.hamsung_project.dto.ReviewDto;
+import hamsung.hamsung_project.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

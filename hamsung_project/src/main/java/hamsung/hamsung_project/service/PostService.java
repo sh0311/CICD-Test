@@ -1,10 +1,10 @@
-package hamsung.hamsung_project.Service;
+package hamsung.hamsung_project.service;
 
-import hamsung.hamsung_project.Dto.PostDto;
-import hamsung.hamsung_project.Entity.Post;
-import hamsung.hamsung_project.Entity.Study;
-import hamsung.hamsung_project.Repository.PostRepository;
-import hamsung.hamsung_project.Repository.StudyRepository;
+import hamsung.hamsung_project.dto.PostDto;
+import hamsung.hamsung_project.entity.Post;
+import hamsung.hamsung_project.entity.Study;
+import hamsung.hamsung_project.repository.PostRepository;
+import hamsung.hamsung_project.repository.StudyRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

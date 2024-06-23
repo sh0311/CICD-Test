@@ -1,7 +1,6 @@
-package hamsung.hamsung_project.Entity;
+package hamsung.hamsung_project.entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Name;
 import lombok.*;
 
 @AllArgsConstructor

@@ -1,8 +1,7 @@
-package hamsung.hamsung_project.Service;
+package hamsung.hamsung_project.service;
 
-import hamsung.hamsung_project.Dto.ReviewDto;
-import hamsung.hamsung_project.Entity.Review;
-import hamsung.hamsung_project.Repository.ReviewRepository;
+import hamsung.hamsung_project.dto.ReviewDto;
+import hamsung.hamsung_project.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

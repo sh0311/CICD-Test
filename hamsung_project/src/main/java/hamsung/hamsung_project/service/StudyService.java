@@ -1,7 +1,7 @@
-package hamsung.hamsung_project.Service;
+package hamsung.hamsung_project.service;
 
-import hamsung.hamsung_project.Entity.Study;
-import hamsung.hamsung_project.Repository.StudyRepository;
+import hamsung.hamsung_project.entity.Study;
+import hamsung.hamsung_project.repository.StudyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
