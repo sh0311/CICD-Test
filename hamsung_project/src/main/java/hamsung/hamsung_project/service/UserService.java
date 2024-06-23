@@ -1,9 +1,8 @@
 package hamsung.hamsung_project.service;
 
-import hamsung.hamsung_project.dto.UserDTO;
+import hamsung.hamsung_project.dto.UserRequestDTO;
 import hamsung.hamsung_project.entity.User;
 import hamsung.hamsung_project.repository.UserRepository;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +22,7 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public ResponseEntity joinUser(UserDTO userDTO){
+    public ResponseEntity joinUser(UserRequestDTO userDTO){
 
         String username = userDTO.getUsername();
         String email = userDTO.getEmail();
@@ -49,7 +48,7 @@ public class UserService {
         return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
     }
 
-    public ResponseEntity updateUser(Long id,UserDTO userDTO) {
+    public ResponseEntity updateUser(Long id, UserRequestDTO userDTO) {
 
         String username = userDTO.getUsername();
         String email = userDTO.getEmail();
