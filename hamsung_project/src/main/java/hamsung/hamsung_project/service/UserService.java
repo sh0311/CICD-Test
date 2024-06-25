@@ -1,9 +1,8 @@
 package hamsung.hamsung_project.service;
 
-import hamsung.hamsung_project.dto.UserDTO;
+import hamsung.hamsung_project.dto.UserRequestDTO;
 import hamsung.hamsung_project.entity.User;
 import hamsung.hamsung_project.repository.UserRepository;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,33 +22,24 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public ResponseEntity joinUser(UserDTO userDTO){
+    public Long joinUser(UserRequestDTO userDTO){
 
         String username = userDTO.getUsername();
         String email = userDTO.getEmail();
-        String password = userDTO.getPassword();
 
         if (userRepository.existsByUsername(username))
-            return new ResponseEntity<>("invalid username", HttpStatus.BAD_REQUEST);
+            throw new IllegalStateException("invalid username");
         if (userRepository.existsByEmail(email))
-            return new ResponseEntity<>("invalid email", HttpStatus.BAD_REQUEST);
+            throw new IllegalStateException("invalid email");
 
-        User data = new User();
-
-        data.setUsername(username);
-        data.setPassword(bCryptPasswordEncoder.encode(password));
-        data.setEmail(userDTO.getEmail());
-
-        data.setRole("ROLE_USER");
-        data.setBadge("BRONZE");
-        data.setPoint(0);
-        data.setImaged_num(userDTO.getImage_num());
+        userDTO.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+        User data = userDTO.toEntity();
 
         userRepository.save(data);
-        return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
+        return data.getId();
     }
 
-    public ResponseEntity updateUser(Long id,UserDTO userDTO) {
+    public ResponseEntity updateUser(Long id, UserRequestDTO userDTO) {
 
         String username = userDTO.getUsername();
         String email = userDTO.getEmail();

@@ -1,6 +1,6 @@
 package hamsung.hamsung_project.controller;
 
-import hamsung.hamsung_project.dto.UserDTO;
+import hamsung.hamsung_project.dto.UserRequestDTO;
 import hamsung.hamsung_project.entity.User;
 import hamsung.hamsung_project.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +20,11 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity createUser(UserDTO userdto) {
+    public ResponseEntity createUser(UserRequestDTO userdto) {
 
-        return userService.joinUser(userdto);
+        userService.joinUser(userdto);
+
+        return ResponseEntity.ok("User registered successfully");
     }
 
     @GetMapping("/users/{user_id}")
@@ -46,7 +48,7 @@ public class UserController {
     }
 
     @PutMapping("/users/{user_id}")
-    public ResponseEntity updateUser(@PathVariable(name="user_id")Long id,UserDTO userDTO) {
+    public ResponseEntity updateUser(@PathVariable(name="user_id")Long id, UserRequestDTO userDTO) {
 
         return userService.updateUser(id, userDTO);
 
