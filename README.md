@@ -1,1 +1,0 @@
-# hamsung_backend
