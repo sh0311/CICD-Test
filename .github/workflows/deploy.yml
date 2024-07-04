@@ -9,7 +9,6 @@ on:
     branches: [ "main" ]
     
 
-# 본인이 설정한 값을 여기서 채워넣습니다.
 # 리전, 버킷 이름, CodeDeploy 앱 이름, CodeDeploy 배포 그룹 이름
 env:
   AWS_REGION: ap-northeast-2
@@ -37,11 +36,14 @@ jobs:
           java-version: '17'
 
       - name: gradlew에 실행 권한 부여
-        run: chmod +x gradlew
-        shell: bash
+        run: chmod +x ./gradlew
+      - name: 프로젝트 빌드
+        run: ./gradlew clean build -x test
 
-      - name: Build and Test
-        run: ./gradlew build test
+        # 빌드 파일을 zip 형식으로 압축 - S3에서는 jar 저장이 안되기 때문에 zip으로 생성
+      - name: Make zip file
+        run: zip -r ./$GITHUB_SHA.zip .
+        shell: bash
 
       # (4) AWS 인증 (IAM 사용자 Access Key, Secret Key 활용)
       - name: Configure AWS credentials
