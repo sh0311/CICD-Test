@@ -38,7 +38,7 @@ jobs:
       - name: gradlew에 실행 권한 부여
         run: chmod +x hamsung_project/./gradlew
       - name: 프로젝트 빌드
-        run: ./gradlew clean build -x test
+        run: hamsung_project/./gradlew clean build -x test
 
         # 빌드 파일을 zip 형식으로 압축 - S3에서는 jar 저장이 안되기 때문에 zip으로 생성
       - name: Make zip file
