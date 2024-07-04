@@ -7,9 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    
 
 # 본인이 설정한 값을 여기서 채워넣습니다.
 # 리전, 버킷 이름, CodeDeploy 앱 이름, CodeDeploy 배포 그룹 이름
@@ -19,20 +17,17 @@ env:
   CODE_DEPLOY_APPLICATION_NAME: my-codedeploy-app
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: my-codedeploy-deployment-group
 
-permissions:
-  contents: read
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
       # (1) 기본 체크아웃
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # (2) JDK 17 세팅
       - name: Set up JDK 17
@@ -41,11 +36,10 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # (3) Gradle build (Test 제외)
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
-        with:
-          arguments: clean build -x test
+      - name: gradlew에 실행 권한 부여
+        run: chmod +x ./gradlew
+      - name: 프로젝트 빌드
+        run: ./gradlew clean build -x test
 
       # (4) AWS 인증 (IAM 사용자 Access Key, Secret Key 활용)
       - name: Configure AWS credentials
