@@ -40,10 +40,6 @@ jobs:
       - name: 프로젝트 빌드
         run: hamsung_project/./gradlew clean build -x test
 
-        # 빌드 파일을 zip 형식으로 압축 - S3에서는 jar 저장이 안되기 때문에 zip으로 생성
-      - name: Make zip file
-        run: zip -r ./$GITHUB_SHA.zip .
-        shell: bash
 
       # (4) AWS 인증 (IAM 사용자 Access Key, Secret Key 활용)
       - name: Configure AWS credentials
