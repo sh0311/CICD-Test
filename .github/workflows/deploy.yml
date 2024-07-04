@@ -38,8 +38,10 @@ jobs:
 
       - name: gradlew에 실행 권한 부여
         run: chmod +x ./gradlew
-      - name: 프로젝트 빌드
-        run: ./gradlew clean build -x test
+        shell: bash
+
+      - name: Build and Test
+        run: ./gradlew build test
 
       # (4) AWS 인증 (IAM 사용자 Access Key, Secret Key 활용)
       - name: Configure AWS credentials
