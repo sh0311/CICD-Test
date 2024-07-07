@@ -2,11 +2,10 @@ cd /home/ubuntu/app
 
 JAR_NAME=$(ls /home/ubuntu/app/build/libs/ | grep '.jar' | tail -n 1)
 JAR_PATH=/home/ubuntu/app/build/libs/$JAR_NAME
-APP_NAME=hamsung_project
 
 # 현재 어플리케이션 이름으로 실행중인 프로세스 아이디를 찾아서 kill한다.
 echo "> 현재 구동중인 애플리케이션 pid 확인"
-CURRENT_PID=$(pgrep -f ${APP_NAME}.*.jar)
+CURRENT_PID=$(pgrep -f .jar)
 
 echo "> 현재 구동중인 애플리케이션 pid: $CURRENT_PID"
 if [ -z "$CURRENT_PID" ]; then
