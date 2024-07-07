@@ -1,40 +1,52 @@
 package hamsung.hamsung_project.dto;
 
-import hamsung.hamsung_project.entity.Board;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import hamsung.hamsung_project.entity.Comment;
+import hamsung.hamsung_project.entity.Recruit;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@Setter
+@ToString
+//@NoArgsConstructor
+@AllArgsConstructor
 public class RecruitsResponseDto {
-    private Long recruits_id;
-    private BigInteger user_id;
-    private BigInteger study_id;
+    private Long id;
+    @JsonProperty("user_id")
+    private Long user_id;
+    @JsonProperty("study_id")
+    private Long study_id;
     private String title;
     private String description;
     private String category;
-    private BigInteger capacity;
+    private Integer capacity;
     private String place;
-    private BigInteger view;
-    private Date startDate;
-    private Date endDate;
+    private Integer view;
+//    private Integer commentCount;
+    @JsonProperty("createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDate createdAt;
+//    @JsonProperty("study_id")
+//    private Study study;
 
-    public RecruitsResponseDto(Board entity){
-        this.recruits_id=entity.getRecruitsId();
-        this.user_id=entity.getUserId();
-        this.study_id=entity.getStudyId();
-        this.title=entity.getTitle();
-        this.description=entity.getDescription();
-        this.category=entity.getCategory();
-        this.capacity=entity.getCapacity();
-        this.place=entity.getPlace();
-        this.view=entity.getView();
-        this.startDate=entity.getStartDate();
-        this.endDate=entity.getEndDate();
+
+
+
+    //entity->dto
+    public static RecruitsResponseDto createRecruitsDTO(Recruit recruit) {
+        return new RecruitsResponseDto(recruit.getId(), recruit.getUsers().getId(), recruit.getStudy().getId(), recruit.getTitle(), recruit.getDescription(), recruit.getCategory()
+                , recruit.getCapacity(), recruit.getPlace(), recruit.getView(), recruit.getCreatedAt());
     }
+
+
+
+
+
 
 
 

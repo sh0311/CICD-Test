@@ -7,17 +7,12 @@ files:
     overwrite: yes
 
 permissions:
-  - object: /
-    pattern: "**"
+  - object: /home/ubuntu/app
     owner: ubuntu
     group: ubuntu
 
 hooks:
   AfterInstall:
-    - location: scripts/stop.sh
-      timeout: 60
-      runas: ubuntu
-  ApplicationStart:
-    - location: scripts/start.sh
+    - location: deploy.sh
       timeout: 60
       runas: ubuntu
