@@ -35,6 +35,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Create application.properties
+        run: |
+          mkdir -p src/main/resources
+          echo "${{ secrets.PROPERTIES }}" > src/main/resources/application.properties
+        shell: bash
+
       - name: Run chmod to make gradlew executable
         run: chmod +x ./gradlew
 
