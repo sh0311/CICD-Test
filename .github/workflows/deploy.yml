@@ -41,13 +41,15 @@ jobs:
           echo "${{ secrets.PROPERTIES }}" > src/main/resources/application.properties
         shell: bash
 
-      - name: Run chmod to make gradlew executable
+
+      - name: Setup with Gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+
+      - name: Run chmod to make gradlew executable (give permission)
         run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
-        with:
-          arguments: clean build -x test
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
 
 
       # (4) AWS 인증 (IAM 사용자 Access Key, Secret Key 활용)
