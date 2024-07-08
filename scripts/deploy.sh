@@ -1,3 +1,4 @@
+
 cd /home/ubuntu/app
 
 JAR_NAME=$(ls /home/ubuntu/app/build/libs/ | grep '.jar' | tail -n 1)
@@ -16,6 +17,14 @@ else
 	sleep 5
 fi
 
+
+
+echo "> $JAR_PATH 에 실행 권한 추가"
+chmod +x $JAR_PATH
+
+
 # 그후 재가동
 echo "> $JAR_PATH 배포"
 nohup java -jar $JAR_PATH > /dev/null 2> /dev/null < /dev/null &
+
+exit 0
